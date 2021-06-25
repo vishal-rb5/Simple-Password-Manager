@@ -1,4 +1,4 @@
-from hasher import decode_password, encode_password
+from hasher import decode_password, encode_password, hash_master_password
 import elara
 from stdiomask import getpass
 
@@ -38,8 +38,9 @@ def delete_password(db):
         j+=1
     
     index = int(input("Enter website serial no. for which password is to be deleted - "))
-    verify_master_password = getpass(prompt = "Enter master password for verification - ", mask = '*')
-    if verify_master_password == decode_password(db.get("Masterpassword")):
+    verify_master_password_unhashed = getpass(prompt = "Enter master password for verification - ", mask = '*')
+    verify_master_password = hash_master_password(verify_master_password_unhashed)
+    if verify_master_password == db.get("Masterpassword"):
         if index>0 and index<=len(keys):
             db.rem(keys[index-1])
             # Del website and password from dict
@@ -59,9 +60,10 @@ def update_password(db):
         print(j, ". ", i)
         j+=1
     
-    index = int(input("Enter website serial no. for which password is to be deleted - "))
-    verify_master_password = getpass(prompt = "Enter master password for verification - ", mask = '*')
-    if verify_master_password == decode_password(db.get("Masterpassword")):
+    index = int(input("Enter website serial no. for which password is to be updated - "))
+    verify_master_password_unhashed = getpass(prompt = "Enter master password for verification - ", mask = '*')
+    verify_master_password = hash_master_password(verify_master_password_unhashed)
+    if verify_master_password == db.get("Masterpassword"):
         if index>0 and index<=len(keys):
             newpass = getpass(prompt = "Enter new password - ", mask = '*')
             db.set(keys[index-1], encode_password(newpass))
