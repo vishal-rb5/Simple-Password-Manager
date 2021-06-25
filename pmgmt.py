@@ -2,15 +2,15 @@
 from stdiomask import getpass
 import json
 import elara
+import hashlib
 
-from hasher import decode_password, encode_password
+from hasher import decode_password, encode_password, hash_master_password
 from CRUD import new_password, view_password, delete_password, update_password
 
 
 def set_master_password():
     master_password = getpass(prompt = "Set Master Password - ", mask = '*')
-    # Verify mpass
-    return encode_password(master_password)
+    return hash_master_password(master_password)
 
 
 
@@ -25,8 +25,9 @@ def intialise_db():
 
 def main():
     db = intialise_db()
-    verify_master_password = getpass(prompt = "Enter master password to proceed - ", mask = '*' )
-    if verify_master_password == decode_password(db.get("Masterpassword")): 
+    verify_master_password_unhashed = getpass(prompt = "Enter master password to proceed - ", mask = '*' )
+    verify_master_password = hash_master_password(verify_master_password_unhashed)
+    if verify_master_password == db.get("Masterpassword"): 
         print("Hi! Please select an option you want to continue with: ")
         while(1):
             print(" ")
