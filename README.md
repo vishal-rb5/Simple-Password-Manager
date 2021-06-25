@@ -3,6 +3,12 @@ A simple application while allows you to manage your passwords.
 
 #### Installation:
 
+Clone the repository:
+
+```sh
+git clone https://github.com/vishal-rb5/Simple-Password-Manager.git
+```
+
 Install all the dependencies mentioned in the file below:
 
 ```python
