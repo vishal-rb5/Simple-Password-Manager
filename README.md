@@ -5,17 +5,17 @@ A simple application while allows you to manage your passwords.
 
 Install all the dependencies mentioned in the file below:
 
-'''python
+```python
 pip install - requirements.txt
-'''
+```
 
 #### Usage:
 
 Run the file:
 
-'''python
+```python
 python pmgmt.py
-'''
+```
 
 #### Description:
 
