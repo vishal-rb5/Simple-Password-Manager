@@ -2,7 +2,6 @@ from hasher import decode_password, encode_password, hash_master_password
 import elara
 from stdiomask import getpass
 
-
 def new_password(db):
     
     website = input("Enter website for which password must be saved - ")
