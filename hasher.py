@@ -2,6 +2,7 @@ import base64
 import hashlib
 import elara
 
+
 def get_master_password_hash():
     db = elara.exe_secure("data.db", True)
     return db.get("Masterpassword")
