@@ -22,6 +22,6 @@ python pmgmt.py
 * A simple password manager that performs all the CRUD functions.
 * Passwrods are encoded and then stored into an encrypted Elara DB file.
 
-###### Disclaimer:
+#### Disclaimer:
 
 * This version is not of industry grade and should be used with caution.
