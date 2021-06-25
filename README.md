@@ -1,5 +1,5 @@
 # Simple-Password-Manager
-A simple application while allows you to manage your passwords.
+A simple application which allows you to manage your passwords.
 
 #### Installation:
 
